@@ -1,0 +1,14 @@
+[
+    {"n": 0, "testo": "Cos'è un webserver?", "pt": 2, "risp": [
+        {"desc":"Un software che consente di aprire un file word", "corretta":false},
+        {"desc":"Un software che consente di interpretare un file Java", "corretta":false},
+        {"desc":"Un software che gestisce le risorse e la conmnessione HTTP di un server", "corretta":true},
+        {"desc":"Un pc che analizza i file HTML", "corretta":false}
+        ]},
+    {"n": 1, "testo": "Definizione di SVG", "pt": 1.5, "risp": [
+        {"desc":"Un formato di file di testo", "corretta":false},
+        {"desc":"Il nome di un software", "corretta":false},
+        {"desc":"La sigla dell'organo che vigila sulla privacy informatica", "corretta":false},
+        {"desc":"Un formato vettoriale relativo alle immagini", "corretta":true}
+        ]}
+]
