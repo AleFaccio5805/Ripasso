@@ -6,3 +6,7 @@ footer{
     width: 200px;
     margin: 0px auto;
 }
+
+header{
+    background-color: grey;
+}
