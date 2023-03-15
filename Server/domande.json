@@ -2,25 +2,33 @@
     {"n": 0, "testo": "Cos'è un webserver?", "pt": 2, "risp": [
         {"cod":0,"desc":"Un software che consente di aprire un file word", "corretta":false},
         {"cod":1,"desc":"Un software che consente di interpretare un file Java", "corretta":false},
+
         {"cod":2,"desc":"Un software che gestisce le risorse e la conmnessione HTTP di un server", "corretta":true},
+
         {"cod":3,"desc":"Un pc che analizza i file HTML", "corretta":false}
         ]},
     {"n": 1, "testo": "Definizione di SVG", "pt": 1.5, "risp": [
         {"cod":4,"desc":"Un formato di file di testo", "corretta":false},
         {"cod":5,"desc":"Il nome di un software", "corretta":false},
         {"cod":6,"desc":"La sigla dell'organo che vigila sulla privacy informatica", "corretta":false},
+
         {"cod":7,"desc":"Un formato vettoriale relativo alle immagini", "corretta":true}
+
         ]},
     {"n": 2, "testo": "A cosa serve un DBMS?", "pt": 3, "risp": [
         {"cod":8,"desc":"A scrivere file JSON", "corretta":false},
+
         {"cod":9,"desc":"A gestire i dati di un database", "corretta":true},
+
         {"cod":10,"desc":"A generare un numero RANDOM", "corretta":false},
         {"cod":11,"desc":"A gestire i dati di una tabella di Excel", "corretta":false}
         ]},
     {"n": 3, "testo": "Dove si trova la ALU?", "pt": 1.5, "risp": [
         {"cod":12,"desc":"Nei televisori a tubo catodico", "corretta":false},
         {"cod":13,"desc":"Nel cibo", "corretta":false},
+
         {"cod":14,"desc":"Nello smartphone", "corretta":true},
+
         {"cod":15,"desc":"Nei cani", "corretta":false}
         ]}
 ]

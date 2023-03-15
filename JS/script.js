@@ -31,22 +31,40 @@ function init(){
 function spedisci(){
 
     var sel = document.querySelectorAll("input[value]:checked");
+
+    if(sel.length < 4)
+        alert("Prima di spedire il test, seleziona almeno una risposta per domanda");
+        
     var selezione = new Array();
     var corrette = new Array();
     var somma = 2;
-    for(let i = 0; i < domande.length; i++)
+    for(let i = 0; i < sel.length; i++)
     {
         selezione[i] = sel[i].getAttribute("value");
+        console.log(selezione[i])
     }
     
-    for(let i in domande)
+    for(let i in selezione)
     {
         for(let j in domande[i].risp){
             if(domande[i].risp[j].corretta == true){
-                corrette[i] = selezione[i]
+                corrette[i] = domande[i].risp[j].cod;
             }
         }
+
+
     }
+        
+    console.log(corrette);
+
+    for(let i in selezione){
+        
+        console.log(domande[i].pt);
+        if(selezione[i] == corrette[i]){
+            somma += domande[i].pt;
+        }
+    }
+    console.log(somma);
     
 
     
