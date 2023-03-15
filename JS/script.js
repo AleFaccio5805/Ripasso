@@ -1,6 +1,7 @@
 
 window.onload = init;
 var indirizzo = window.location.href + "Server/";
+let domande;
 
 function init(){
     let ris = fetch(indirizzo + "domande.php",{method : "GET"});
@@ -8,7 +9,7 @@ function init(){
     ris.then(   
         async function(dati){
             //Lettura dati della risposta e li convertiamo in json => chiamata asincrona
-            let domande = await dati.json();
+            domande = await dati.json();
             
             let div = document.getElementById("divDomande");
             for(let i in domande)
@@ -25,6 +26,30 @@ function init(){
             }
         }
     );
+}
+
+function spedisci(){
+
+    var sel = document.querySelectorAll("input[value]:checked");
+    var selezione = new Array();
+    var corrette = new Array();
+    var somma = 2;
+    for(let i = 0; i < domande.length; i++)
+    {
+        selezione[i] = sel[i].getAttribute("value");
+    }
+    
+    for(let i in domande)
+    {
+        for(let j in domande[i].risp){
+            if(domande[i].risp[j].corretta == true){
+                corrette[i] = selezione[i]
+            }
+        }
+    }
+    
+
+    
 }
 
 

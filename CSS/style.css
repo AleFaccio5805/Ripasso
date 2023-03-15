@@ -10,3 +10,20 @@ footer{
 header{
     background-color: grey;
 }
+
+#btnSpedisci{
+    margin:20px auto;
+    font-size: 30px;
+    border-radius: 5px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: aliceblue;
+}
+
+#divButton{
+    width: 200px;
+    margin: 0px auto;
+}
+
+body{
+    background-color: azure;
+}
