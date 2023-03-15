@@ -15,14 +15,15 @@ function init(){
             for(let i in domande)
             {
                 let domanda = document.createElement("div");
-                domanda.innerHTML = domande[i].testo;
-                div.appendChild(domanda);
+                domanda.innerHTML = domande[i].testo + " (Pt. " + domande[i].pt + ")";
                 for(let j in domande[i].risp){
                     let radio = document.createElement("div");
                     radio.innerHTML = `<input type='radio' value ='${domande[i].risp[j].cod}' name ="${domande[i].n}"/> 
                     ${domande[i].risp[j].desc}<br/>`;
                     domanda.appendChild(radio);
                 }
+                domanda.innerHTML += "<br/>";
+                div.appendChild(domanda);
             }
         }
     );
@@ -30,44 +31,38 @@ function init(){
 
 function spedisci(){
 
-    var sel = document.querySelectorAll("input[value]:checked");
+    var sel = document.querySelectorAll("input:checked");
 
-    if(sel.length < 4)
-        alert("Prima di spedire il test, seleziona almeno una risposta per domanda");
+    if(sel.length < domande.length)
+        alert("Prima di spedire il test, seleziona ALMENO una risposta per OGNI domanda");
+    else
+    {
+        var selezione = new Array();
+        var corrette = new Array();
+        var somma = 2;
+        for(let i = 0; i < sel.length; i++)
+        {
+            selezione[i] = sel[i].getAttribute("value");
+        }
         
-    var selezione = new Array();
-    var corrette = new Array();
-    var somma = 2;
-    for(let i = 0; i < sel.length; i++)
-    {
-        selezione[i] = sel[i].getAttribute("value");
-        console.log(selezione[i])
-    }
-    
-    for(let i in selezione)
-    {
-        for(let j in domande[i].risp){
-            if(domande[i].risp[j].corretta == true){
-                corrette[i] = domande[i].risp[j].cod;
+        for(let i in selezione)
+        {
+            for(let j in domande[i].risp){
+                if(domande[i].risp[j].corretta == true){
+                    corrette[i] = domande[i].risp[j].cod;
+                }
             }
         }
 
-
-    }
-        
-    console.log(corrette);
-
-    for(let i in selezione){
-        
-        console.log(domande[i].pt);
-        if(selezione[i] == corrette[i]){
-            somma += domande[i].pt;
+        for(let i in selezione){
+            if(selezione[i] == corrette[i]){
+                somma += domande[i].pt;
+            }
         }
-    }
-    console.log(somma);
-    
+        alert("Test spedito con successo");
 
-    
+        alert("Complimenti!!! Hai preso " + somma);
+    }
 }
 
 
