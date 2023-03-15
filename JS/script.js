@@ -32,6 +32,7 @@ function init(){
 function spedisci(){
 
     var sel = document.querySelectorAll("input:checked");
+    var contErrate = 0
 
     if(sel.length < domande.length)
         alert("Prima di spedire il test, seleziona ALMENO una risposta per OGNI domanda");
@@ -58,10 +59,14 @@ function spedisci(){
             if(selezione[i] == corrette[i]){
                 somma += domande[i].pt;
             }
+            else
+                contErrate++;
         }
         alert("Test spedito con successo");
 
         alert("Complimenti!!! Hai preso " + somma);
+
+        alert("Domande Sbagliate: " + contErrate);
     }
 }
 
