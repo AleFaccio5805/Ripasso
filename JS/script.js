@@ -15,6 +15,7 @@ function init(){
             for(let i in domande)
             {
                 let domanda = document.createElement("div");
+                domanda.setAttribute("id", "domanda");
                 domanda.innerHTML = domande[i].testo + " (Pt. " + domande[i].pt + ")";
                 for(let j in domande[i].risp){
                     let radio = document.createElement("div");
@@ -29,10 +30,35 @@ function init(){
     );
 }
 
-/*function spedisci(){
+
+function inserisciDomande(filtro = null){
+    let div = document.getElementById("divDomande");
+    div.innerHTML="";//Cancello le domande precedenti
+    console.log(filtro);
+    for(let j in domande){
+        if(filtro == null || domande[j].testo.toLowerCase().includes(filtro.toLowerCase()))
+        {
+        let domanda = document.createElement("div");
+        domanda.setAttribute("id", "domanda");
+        domanda.innerHTML = domande[j].testo;
+        for(let i in domande[j].risp){
+            let radio = document.createElement("div");
+            radio.innerHTML = `
+                <input type='radio' value='${domande[j].risp[i].cod}' name='${domande[j].n}' />
+                ${domande[j].risp[i].desc}<br>
+                `;
+            domanda.appendChild(radio);
+        }
+        div.appendChild(domanda);
+        }
+    }
+}
+
+function spedisci(){
 
     var sel = document.querySelectorAll("input:checked");
     var contErrate = 0
+    risultati = [];
 
     if(sel.length < domande.length)
         alert("Prima di spedire il test, seleziona ALMENO una risposta per OGNI domanda");
@@ -62,43 +88,33 @@ function init(){
             else
                 contErrate++;
         }
+
+        for(let i in selezione){
+            risultati.push({
+                nDomanda:sel[i].name,
+                nRisposta:sel[i].value
+            });
+        }
+
+
         alert("Test spedito con successo");
 
         alert("Complimenti!!! Hai preso " + somma);
 
         alert("Domande Sbagliate: " + contErrate);
     }
-}*/
 
-function controlla(){
-    console.log(this);
-    risultati = [];
-    let risposte = document.querySelectorAll("input:checked");
-    if(risposte.length == domande.length){
-        let contErrate = 0;
-        for(let risposta of risposte){
-            let prova = domande[risposta.name].risp[risposta.value];
-            if(!domande[risposta.name].risp[risposta.value].corretta){
-                contErrate++;
-            }
-            risultati.push({
-                nDomanda:risposta.name,
-                nRisposta:risposta.value
-            });
-        }
-        alert("Hai sbagliato "+ contErrate+" risposte");
-
-    }else{
-        alert("Attenzione, non hai risposto a tutte le domande!");
-    }
-    console.log(risultati);
-    console.log(JSON.stringify(risultati));
+    //Download automatico del file
+    let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(risultati));
     let a = document.createElement("a");
-    a.setAttribute("download", "risultati.json");
-    a.href = JSON.stringify(risultati);
+    a.href = data;
+    a.setAttribute("download", "risultati.json")
     a.click();
 }
 
-
-
-
+function rilasciato(evento)
+{
+    console.log(evento)
+    filtro = evento.target.value;
+    inserisciDomande(filtro);
+}
