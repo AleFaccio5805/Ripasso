@@ -29,7 +29,7 @@ function init(){
     );
 }
 
-function spedisci(){
+/*function spedisci(){
 
     var sel = document.querySelectorAll("input:checked");
     var contErrate = 0
@@ -68,7 +68,37 @@ function spedisci(){
 
         alert("Domande Sbagliate: " + contErrate);
     }
+}*/
+
+function controlla(){
+    console.log(this);
+    risultati = [];
+    let risposte = document.querySelectorAll("input:checked");
+    if(risposte.length == domande.length){
+        let contErrate = 0;
+        for(let risposta of risposte){
+            let prova = domande[risposta.name].risp[risposta.value];
+            if(!domande[risposta.name].risp[risposta.value].corretta){
+                contErrate++;
+            }
+            risultati.push({
+                nDomanda:risposta.name,
+                nRisposta:risposta.value
+            });
+        }
+        alert("Hai sbagliato "+ contErrate+" risposte");
+
+    }else{
+        alert("Attenzione, non hai risposto a tutte le domande!");
+    }
+    console.log(risultati);
+    console.log(JSON.stringify(risultati));
+    let a = document.createElement("a");
+    a.setAttribute("download", "risultati.json");
+    a.href = JSON.stringify(risultati);
+    a.click();
 }
+
 
 
 
