@@ -5,8 +5,8 @@
     $data = date("Y-m-d");
 
     //Creo File con le risposte dentro
-    $fp = fopen("Files/".$data."risposte.json", "w");
-    fwrite($fp, $dati);
+    $fp = fopen("../Files/".$data."risposte.json", "w");
+    fwrite($fp, $json);
     fclose($fp);
     
     //Definisco la risposta

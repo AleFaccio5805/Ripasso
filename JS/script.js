@@ -111,12 +111,12 @@ function spedisci(){
         a.setAttribute("download", "risultati.json");
         a.click();
 
+        //contatto il server mandando le risposte
         spedisciRisposte(risultati);
     }
 }
 
 function spedisciRisposte(risp){
-    //alert("mostra trailer:" + cod);
     //1. preparo i dati da mandare
     let data = {risp};
     //2. promise con fetch
@@ -127,11 +127,10 @@ function spedisciRisposte(risp){
             'Content-Type':'application/json'
         },
         /* CONVERSIONE DA JSON a STRINGA */
-        body:data.stringify()
+        body:JSON.stringify(risp)
     });
     promise.then(async(response)=>{
-        let dati = await response.json();
-        console.log(dati);
+        alert(await response.json().desc);
     });
 }
 
