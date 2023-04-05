@@ -105,13 +105,34 @@ function spedisci(){
         
         //Download automatico del file
         let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(risultati));
+        console.log(risultati);
         let a = document.createElement("a");
         a.href = data;
-        a.setAttribute("download", "risultati.json")
+        a.setAttribute("download", "risultati.json");
         a.click();
-    }
 
-    
+        spedisciRisposte(risultati);
+    }
+}
+
+function spedisciRisposte(risp){
+    //alert("mostra trailer:" + cod);
+    //1. preparo i dati da mandare
+    let data = {risp};
+    //2. promise con fetch
+    let promise = fetch(indirizzo + "risposte.php", {
+        method:'POST',
+        headers:{
+            /* TIPO DI DATI INVIATI */
+            'Content-Type':'application/json'
+        },
+        /* CONVERSIONE DA JSON a STRINGA */
+        body:data.stringify()
+    });
+    promise.then(async(response)=>{
+        let dati = await response.json();
+        console.log(dati);
+    });
 }
 
 function rilasciato(evento)
