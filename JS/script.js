@@ -130,7 +130,8 @@ function spedisciRisposte(risp){
         body:JSON.stringify(risp)
     });
     promise.then(async(response)=>{
-        alert(await response.json().desc);
+        let json = response.json();
+        alert(await json.desc);
     });
 }
 
