@@ -117,21 +117,15 @@ function spedisci(){
 }
 
 function spedisciRisposte(risp){
-    //1. preparo i dati da mandare
-    let data = {risp};
     //2. promise con fetch
     let promise = fetch(indirizzo + "risposte.php", {
         method:'POST',
-        headers:{
-            /* TIPO DI DATI INVIATI */
-            'Content-Type':'application/json'
-        },
         /* CONVERSIONE DA JSON a STRINGA */
         body:JSON.stringify(risp)
     });
-    promise.then(async(response)=>{
-        let json = response.json();
-        alert(await json.desc);
+    promise.then(async function(response){
+        let json = await response.json();
+        alert(json.desc);
     });
 }
 
