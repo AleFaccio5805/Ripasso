@@ -102,14 +102,16 @@ function spedisci(){
         alert("Complimenti!!! Hai preso " + somma);
 
         alert("Domande Sbagliate: " + contErrate);
+        
+        //Download automatico del file
+        let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(risultati));
+        let a = document.createElement("a");
+        a.href = data;
+        a.setAttribute("download", "risultati.json")
+        a.click();
     }
 
-    //Download automatico del file
-    let data = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(risultati));
-    let a = document.createElement("a");
-    a.href = data;
-    a.setAttribute("download", "risultati.json")
-    a.click();
+    
 }
 
 function rilasciato(evento)
